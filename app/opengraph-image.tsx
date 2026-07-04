@@ -70,7 +70,7 @@ export default function OpengraphImage() {
               marginBottom: 20,
             }}
           >
-            ▸ BACKEND DEVELOPER / HO CHI MINH CITY / UTC+7
+            &gt; BACKEND DEVELOPER / HO CHI MINH CITY / UTC+7
           </div>
           <div
             style={{
