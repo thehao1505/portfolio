@@ -267,6 +267,9 @@ h1 .row:nth-child(3) span {
     background 0.15s,
     color 0.15s;
 }
+button.btn {
+  cursor: pointer;
+}
 .btn.solid {
   background: var(--amber);
   color: #04070d;
@@ -647,20 +650,30 @@ footer .wrap {
   flex-wrap: wrap;
   margin-top: 36px;
 }
-.f-links a {
+.f-links a,
+.f-links button {
   font-family: var(--mono);
   font-size: 13px;
   color: var(--cyan);
   text-decoration: none;
   letter-spacing: 0.04em;
 }
-.f-links a::before {
+.f-links button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.f-links a::before,
+.f-links button::before {
   content: "[ ";
 }
-.f-links a::after {
+.f-links a::after,
+.f-links button::after {
   content: " ]";
 }
-.f-links a:hover {
+.f-links a:hover,
+.f-links button:hover {
   color: var(--amber);
 }
 .f-note {

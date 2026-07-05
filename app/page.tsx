@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import CopyEmail from "./CopyEmail";
 import Effects from "./Effects";
 
 /** CSS custom property helper for the skill-bar fill widths. */
@@ -60,9 +61,9 @@ export default function Home() {
                 <a className="btn solid" href="#missions">
                   View missions
                 </a>
-                <a className="btn" href="mailto:thehao155@gmail.com">
-                  Open channel
-                </a>
+                <CopyEmail email="thehao155@gmail.com" className="btn">
+                  Email
+                </CopyEmail>
                 <a
                   className="btn"
                   href="/resume.pdf"
@@ -315,7 +316,9 @@ export default function Home() {
               up.
             </p>
             <div className="f-links">
-              <a href="mailto:thehao155@gmail.com">thehao155@gmail.com</a>
+              <CopyEmail email="thehao155@gmail.com">
+                thehao155@gmail.com
+              </CopyEmail>
               <a href="tel:+84373346086">+84 373 346 086</a>
               <a
                 href="https://github.com/thehao1505"
