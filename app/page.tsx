@@ -114,7 +114,7 @@ export default function Home() {
                 </div>
                 <div className="m-body">
                   <div className="deploy">
-                    <h4>RDC — Citizen Management Platform</h4>
+                    <h4>RDC — National Citizen Management Platform</h4>
                     <div className="d-tag">
                       gov-tech · congo · national scale
                     </div>
@@ -135,20 +135,32 @@ export default function Home() {
                         <span className="chip g">AES encrypted</span>
                       </li>
                       <li>
+                        <strong>Verification-source linking</strong> against
+                        external registries (ONIP, CENI) — auto/manual link,
+                        duplicate-prevention, two-step enrollment &amp;{" "}
+                        <span className="chip">rate-limited</span> ID enquiry
+                      </li>
+                      <li>
                         <strong>Elasticsearch</strong> full-text search +
-                        PostgreSQL schemas with migrations &amp; full audit
+                        PostgreSQL schemas with migrations, user-event logs
+                        streamed to <strong>ClickHouse</strong> for the audit
                         trail
                       </li>
                     </ul>
                   </div>
                   <div className="deploy">
-                    <h4>Trifood — Food Delivery Platform</h4>
+                    <h4>Trifood — Food Delivery &amp; Surplus Marketplace</h4>
                     <div className="d-tag">e-commerce · high traffic</div>
                     <ul>
                       <li>
-                        Order, product &amp; payment APIs on a{" "}
+                        <strong>Surplus Bag</strong> module + merchant order,
+                        product &amp; payment APIs on a{" "}
                         <strong>BullMQ + Redis</strong> pipeline —{" "}
                         <span className="chip g">70%+ coverage</span> via Jest
+                      </li>
+                      <li>
+                        Cart &amp; order validation, auto-sold-out status and
+                        variant price sync on markup changes
                       </li>
                       <li>
                         Product catalog indexed in{" "}
@@ -173,42 +185,43 @@ export default function Home() {
                 <div className="m-body">
                   <div className="deploy">
                     <h4>Pfs — Insurance Data Crawling</h4>
-                    <div className="d-tag">automation · scrapy · selenium</div>
+                    <div className="d-tag">scrapy · selenium · grpc</div>
                     <ul>
                       <li>
-                        Cut collection from ~5 min to{" "}
+                        <strong>Scrapy + Selenium</strong> crawlers (17 spiders),
+                        Cloudflare bypass —{" "}
                         <span className="chip">
                           &lt;30s/record — 10× faster
                         </span>
-                        ; API sources in &lt;3s
                       </li>
                       <li>
                         Scaled to{" "}
                         <span className="chip">10,000s records/day</span> across
-                        10 insurance sites
+                        motor, home, travel &amp; pet insurance
                       </li>
                       <li>
-                        Production infra: NestJS on{" "}
-                        <strong>AWS S3, Cognito, RDS</strong> — TypeORM &amp;
-                        SQLAlchemy
+                        <strong>NestJS</strong> backend driving the crawler over{" "}
+                        <strong>gRPC</strong>, real-time progress via{" "}
+                        <strong>SSE</strong>; AWS S3, Cognito, RDS
                       </li>
                     </ul>
                   </div>
                   <div className="deploy">
-                    <h4>Perkify + Internal Platform</h4>
-                    <div className="d-tag">crm · loyalty · realtime</div>
+                    <h4>Perkify — CRM &amp; Loyalty (Vivaleisure)</h4>
+                    <div className="d-tag">crm · loyalty · aws-cdk</div>
                     <ul>
                       <li>
-                        <strong>Loyalty &amp; redemption engine</strong> for
-                        multi-tenant CRM; optimized MongoDB aggregations
+                        <strong>Loyalty &amp; redemption engine</strong> on
+                        NestJS + MongoDB; optimized aggregations
                       </li>
                       <li>
-                        Cron-driven <strong>Slack news bot</strong> —{" "}
-                        <span className="chip g">~2 hrs/day saved</span>
+                        JWT + <strong>Facebook social login</strong>, WebSocket
+                        updates, cron email campaigns
                       </li>
                       <li>
-                        WebSocket notifications, tree comments, embedding
-                        recommendations, Redis caching
+                        Cloud infra as code with{" "}
+                        <strong>AWS CDK</strong> — EC2, ECR, ELB, Lambda, Route
+                        53
                       </li>
                     </ul>
                   </div>
@@ -226,7 +239,9 @@ export default function Home() {
             <div className="stack-grid reveal">
               <div className="st">
                 <div className="st-k">Backend</div>
-                <div className="st-v">NestJS · Node.js · Next.js</div>
+                <div className="st-v">
+                  NestJS · Node.js · Next.js · gRPC · WebSocket/SSE
+                </div>
                 <div className="bar">
                   <i style={w(0.95)}></i>
                 </div>
@@ -234,7 +249,7 @@ export default function Home() {
               <div className="st">
                 <div className="st-k">Databases</div>
                 <div className="st-v">
-                  PostgreSQL · MongoDB · Redis · Elasticsearch
+                  PostgreSQL · MongoDB · Redis · Elasticsearch · ClickHouse
                 </div>
                 <div className="bar">
                   <i style={w(0.9)}></i>
@@ -256,7 +271,7 @@ export default function Home() {
               </div>
               <div className="st">
                 <div className="st-k">Cloud</div>
-                <div className="st-v">AWS S3 · EC2 · RDS · Cognito</div>
+                <div className="st-v">AWS S3 · EC2 · RDS · Cognito · CDK (IaC)</div>
                 <div className="bar">
                   <i style={w(0.75)}></i>
                 </div>
