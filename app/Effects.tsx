@@ -5,7 +5,7 @@ import * as THREE from "three";
 
 /**
  * Runs all the imperative page behavior from the original single-file build:
- * boot sequence, uptime clock, the Three.js WebGL scene, 3D tilt cards,
+ * boot sequence, the Three.js WebGL scene, 3D tilt cards,
  * count-up metrics and scroll reveals. Renders nothing itself — it drives the
  * static markup in page.tsx by id/class, exactly like the original script.
  */
@@ -43,21 +43,6 @@ export default function Effects() {
       timers.push(setTimeout(() => boot.classList.add("done"), 2600));
       cleanups.push(() => timers.forEach(clearTimeout));
     }
-
-    /* ================= UPTIME ================= */
-    const t0 = new Date("2023-12-01T09:00:00+07:00").getTime();
-    const up = document.getElementById("uptime")!;
-    function tickUptime() {
-      const s = Math.floor((Date.now() - t0) / 1000);
-      const d = Math.floor(s / 86400),
-        h = String(Math.floor((s % 86400) / 3600)).padStart(2, "0"),
-        m = String(Math.floor((s % 3600) / 60)).padStart(2, "0"),
-        ss = String(s % 60).padStart(2, "0");
-      up.textContent = d + "d " + h + ":" + m + ":" + ss;
-    }
-    tickUptime();
-    const uptimeInterval = setInterval(tickUptime, 1000);
-    cleanups.push(() => clearInterval(uptimeInterval));
 
     /* ================= THREE.JS SCENE ================= */
     const canvas = document.getElementById("gl") as HTMLCanvasElement;

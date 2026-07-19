@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import CopyEmail from "./CopyEmail";
 import Effects from "./Effects";
 
@@ -21,9 +22,6 @@ export default function Home() {
           <a className="sb-id" href="#top">
             HAO<em>.</em>SYS
           </a>
-          <span className="sb-live">
-            <i></i>PROD · UPTIME <span id="uptime">00:00:00</span>
-          </span>
           <nav className="sb-nav" aria-label="Sections">
             <a href="#missions">missions</a>
             <a href="#stack">stack</a>
@@ -35,62 +33,80 @@ export default function Home() {
       <main id="top">
         <div className="wrap">
           <section className="hero" aria-label="Introduction">
-            <div>
-              <p className="h-eyebrow">
-                Backend Developer / Ho Chi Minh City / UTC+7
-              </p>
-              <h1 aria-label="Built for one hundred million users">
-                <span className="row">
-                  <span>BUILT FOR</span>
-                </span>
-                <span className="row">
-                  <span>100 MILLION</span>
-                </span>
-                <span className="row">
-                  <span>USERS.</span>
-                </span>
-              </h1>
-              <p className="h-sub">
-                I&apos;m <strong>Hao Nguyen The</strong>. I design the invisible
-                half of software — queues, caches and pipelines in{" "}
-                <strong>NestJS, PostgreSQL, Redis, Elasticsearch</strong> — for
-                systems that can&apos;t afford to go down. Like a national
-                identity platform for an entire country.
-              </p>
-              <div className="h-cta">
-                <a className="btn solid" href="#missions">
-                  View missions
-                </a>
-                <CopyEmail email="thehao155@gmail.com" className="btn">
-                  Email
-                </CopyEmail>
-                <a
-                  className="btn"
-                  href="/resume.pdf"
-                  download="HaoNguyenThe-CV.pdf"
-                >
-                  Download CV
-                </a>
+            <div className="h-grid">
+              <div className="h-text">
+                <p className="h-eyebrow">
+                  Backend Developer / Ho Chi Minh City / UTC+7
+                </p>
+                <h1 aria-label="Built for one hundred million users">
+                  <span className="row">
+                    <span>BUILT FOR</span>
+                  </span>
+                  <span className="row">
+                    <span>100 MILLION</span>
+                  </span>
+                  <span className="row">
+                    <span>USERS.</span>
+                  </span>
+                </h1>
+                <p className="h-sub">
+                  I&apos;m <strong>Hao Nguyen The</strong>. I design the
+                  invisible half of software — queues, caches and pipelines in{" "}
+                  <strong>NestJS, PostgreSQL, Redis, Elasticsearch</strong> —
+                  for systems that can&apos;t afford to go down. Like a
+                  national identity platform for an entire country.
+                </p>
+                <div className="h-cta">
+                  <a className="btn solid" href="#missions">
+                    View missions
+                  </a>
+                  <CopyEmail email="thehao155@gmail.com" className="btn">
+                    Email
+                  </CopyEmail>
+                  <a
+                    className="btn"
+                    href="/resume.pdf"
+                    download="HaoNguyenThe-CV.pdf"
+                  >
+                    Download CV
+                  </a>
+                </div>
+                <div className="h-metrics" aria-label="Key metrics">
+                  <div className="hm">
+                    <b data-count="100" data-suffix="M+">
+                      0
+                    </b>
+                    <span>citizens designed for</span>
+                  </div>
+                  <div className="hm">
+                    <b data-count="10" data-suffix="×">
+                      0
+                    </b>
+                    <span>faster pipeline</span>
+                  </div>
+                  <div className="hm">
+                    <b data-count="70" data-suffix="%+">
+                      0
+                    </b>
+                    <span>test coverage</span>
+                  </div>
+                </div>
               </div>
-              <div className="h-metrics" aria-label="Key metrics">
-                <div className="hm">
-                  <b data-count="100" data-suffix="M+">
-                    0
-                  </b>
-                  <span>citizens designed for</span>
+
+              <div className="h-photo">
+                <div className="h-photo-ringwrap">
+                  <div className="h-photo-frame">
+                    <Image
+                      src="/avatar-square.jpg"
+                      alt="Hao Nguyen The"
+                      width={700}
+                      height={700}
+                      priority
+                    />
+                    <div className="h-photo-scan" aria-hidden="true"></div>
+                  </div>
                 </div>
-                <div className="hm">
-                  <b data-count="10" data-suffix="×">
-                    0
-                  </b>
-                  <span>faster pipeline</span>
-                </div>
-                <div className="hm">
-                  <b data-count="70" data-suffix="%+">
-                    0
-                  </b>
-                  <span>test coverage</span>
-                </div>
+                <div className="h-photo-tag">// operator.jpg — verified</div>
               </div>
             </div>
             <div className="h-scroll">scroll ▾</div>
@@ -120,31 +136,44 @@ export default function Home() {
                     </div>
                     <ul>
                       <li>
-                        <strong>Architected NestJS microservices</strong> — core
-                        APIs, async eKYC workers, cron jobs — designed for{" "}
+                        National-scale system needed a resilient backend;{" "}
+                        <strong>architected NestJS microservices</strong>{" "}
+                        separating core APIs, async eKYC workers and cron jobs —
+                        designed for{" "}
                         <span className="chip">100M+ citizens</span>
                       </li>
                       <li>
-                        <strong>Redis + Bloom Filter</strong> caching &amp;{" "}
-                        <strong>BullMQ</strong> queues: cut DB load, moved
-                        OCR/face-recognition off the request cycle
+                        Large citizen datasets caused DB bottlenecks; applied{" "}
+                        <strong>Redis + Bloom Filter</strong> caching and{" "}
+                        <strong>BullMQ</strong> async queues, cutting DB load and
+                        decoupling OCR/face recognition from the API cycle
                       </li>
                       <li>
-                        Secure <strong>eKYC workflow</strong>: Tencent Cloud OCR
-                        &amp; Face Recognition, JWT, RBAC,{" "}
-                        <span className="chip g">AES encrypted</span>
+                        Identity verification required a secure, auditable flow;
+                        built an <strong>eKYC workflow</strong> with Tencent
+                        Cloud OCR &amp; Face Recognition, JWT auth, RBAC and{" "}
+                        <span className="chip g">AES encryption</span>
                       </li>
                       <li>
-                        <strong>Verification-source linking</strong> against
-                        external registries (ONIP, CENI) — auto/manual link,
-                        duplicate-prevention, two-step enrollment &amp;{" "}
-                        <span className="chip">rate-limited</span> ID enquiry
+                        Citizens had to be reconciled against national
+                        registries; built{" "}
+                        <strong>verification-source linking</strong> against
+                        external providers (ONIP, CENI) with auto/manual linking,
+                        duplicate-prevention and a two-step manual enrollment
+                        flow
                       </li>
                       <li>
-                        <strong>Elasticsearch</strong> full-text search +
-                        PostgreSQL schemas with migrations, user-event logs
-                        streamed to <strong>ClickHouse</strong> for the audit
-                        trail
+                        Fraud &amp; abuse risks on lookups; added{" "}
+                        <span className="chip">rate-limiting</span> on
+                        national-ID enquiry and per-API permission configuration
+                        (RBAC)
+                      </li>
+                      <li>
+                        Records needed flexible search and full auditability;
+                        configured <strong>Elasticsearch</strong> full-text
+                        search, designed <strong>PostgreSQL</strong> schemas with
+                        migrations, and streamed user-event logs to{" "}
+                        <strong>ClickHouse</strong> for the analytics/audit trail
                       </li>
                     </ul>
                   </div>
@@ -153,19 +182,23 @@ export default function Home() {
                     <div className="d-tag">e-commerce · high traffic</div>
                     <ul>
                       <li>
-                        <strong>Surplus Bag</strong> module + merchant order,
-                        product &amp; payment APIs on a{" "}
-                        <strong>BullMQ + Redis</strong> pipeline —{" "}
-                        <span className="chip g">70%+ coverage</span> via Jest
+                        APIs needed to be reliable and well-tested; built the{" "}
+                        <strong>Surplus Bag</strong> module and merchant
+                        order/product/payment endpoints (NestJS) with cart &amp;
+                        order validation —{" "}
+                        <span className="chip g">70%+ test coverage</span> via
+                        Jest
                       </li>
                       <li>
-                        Cart &amp; order validation, auto-sold-out status and
-                        variant price sync on markup changes
+                        Surplus inventory and variant pricing had to stay
+                        consistent; implemented auto-sold-out status, variant
+                        price sync on markup changes and a{" "}
+                        <strong>BullMQ + Redis</strong> processing pipeline
                       </li>
                       <li>
-                        Product catalog indexed in{" "}
-                        <strong>Elasticsearch</strong> for fast full-text search
-                        at scale
+                        Product search was slow on large catalogs; indexed data
+                        in <strong>Elasticsearch</strong> to power fast full-text
+                        queries across the product catalog
                       </li>
                     </ul>
                   </div>
@@ -188,21 +221,34 @@ export default function Home() {
                     <div className="d-tag">scrapy · selenium · grpc</div>
                     <ul>
                       <li>
-                        <strong>Scrapy + Selenium</strong> crawlers (17 spiders),
-                        Cloudflare bypass —{" "}
+                        Manual collection took ~5 min/record, unscalable for
+                        thousands of entries; built{" "}
+                        <strong>Scrapy + Selenium</strong> crawlers (17 spiders)
+                        cutting it to{" "}
                         <span className="chip">
-                          &lt;30s/record — 10× faster
-                        </span>
+                          &lt;30s/record — 10×+ faster
+                        </span>{" "}
+                        (API sources &lt;3s)
                       </li>
                       <li>
-                        Scaled to{" "}
+                        Anti-bot protection blocked scraping; bypassed{" "}
+                        <strong>Cloudflare</strong> (cloudscraper/cfscrape,
+                        rotating user-agents), scaling to{" "}
                         <span className="chip">10,000s records/day</span> across
-                        motor, home, travel &amp; pet insurance
+                        motor, home, travel &amp; pet insurance (AAMI, Allianz,
+                        QBE, CBA, NIB, Covermore…)
                       </li>
                       <li>
-                        <strong>NestJS</strong> backend driving the crawler over{" "}
-                        <strong>gRPC</strong>, real-time progress via{" "}
-                        <strong>SSE</strong>; AWS S3, Cognito, RDS
+                        Crawlers needed orchestration and delivery; built a{" "}
+                        <strong>NestJS</strong> backend driving the Python
+                        crawler over <strong>gRPC</strong>, real-time progress
+                        via <strong>SSE</strong>, TypeORM migrations, and JWT +
+                        OTP + login-attempt auth with RBAC
+                      </li>
+                      <li>
+                        Needed production infra; used{" "}
+                        <strong>AWS S3, Cognito, RDS</strong>, ORM via TypeORM
+                        &amp; SQLAlchemy (Alembic migrations) and Redis caching
                       </li>
                     </ul>
                   </div>
@@ -211,17 +257,42 @@ export default function Home() {
                     <div className="d-tag">crm · loyalty · aws-cdk</div>
                     <ul>
                       <li>
-                        <strong>Loyalty &amp; redemption engine</strong> on
-                        NestJS + MongoDB; optimized aggregations
+                        CRM lacked a rewards engine; built{" "}
+                        <strong>loyalty point &amp; redemption</strong> features
+                        on <strong>NestJS + MongoDB</strong>, optimizing
+                        aggregation queries for faster reporting
                       </li>
                       <li>
-                        JWT + <strong>Facebook social login</strong>, WebSocket
-                        updates, cron email campaigns
+                        Multiple roles and channels; developed REST APIs for
+                        admin, staff &amp; customers with JWT + Passport (
+                        <strong>Facebook social login</strong>), WebSocket
+                        real-time updates, rate-limiting (Throttler) and
+                        cron-driven nodemailer email campaigns
                       </li>
                       <li>
-                        Cloud infra as code with{" "}
-                        <strong>AWS CDK</strong> — EC2, ECR, ELB, Lambda, Route
-                        53
+                        Deployment was manual and error-prone; provisioned cloud
+                        infrastructure as code with <strong>AWS CDK</strong> —
+                        EC2, ECR, ELB, IAM, Lambda, Route 53
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="deploy">
+                    <h4>Blog &amp; Autosend News — Internal Platform</h4>
+                    <div className="d-tag">automation · slack · realtime</div>
+                    <ul>
+                      <li>
+                        ~2 hrs/day lost to manual content curation; built an
+                        automated <strong>Slack</strong> integration via cron
+                        jobs delivering tech news &amp; crypto updates —{" "}
+                        <span className="chip g">saved ~2 hrs/day</span>
+                      </li>
+                      <li>
+                        Platform lacked real-time features; implemented WebSocket
+                        notifications, tree comments and content recommendations
+                        via <strong>Embeddings</strong>, with Redis caching
+                      </li>
+                      <li>
+                        Deployed on <strong>NestJS + Prisma + PostgreSQL</strong>
                       </li>
                     </ul>
                   </div>
