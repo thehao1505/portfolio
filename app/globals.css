@@ -12,9 +12,21 @@
   --cyan: #53c7f0;
   --green: #3ddc97;
   --red: #ff5c5c;
+  --on-accent: #04070d;
   --disp: var(--font-chakra), "Chakra Petch", sans-serif;
   --body: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
   --mono: var(--font-jet), "JetBrains Mono", ui-monospace, monospace;
+}
+:root[data-theme="light"] {
+  --bg: #dfe4ea;
+  --panel: #ffffffb8;
+  --panel-solid: #f5f7fa;
+  --line: #c2cbd6;
+  --line-hi: #8fa0b3;
+  --txt: #101b2c;
+  --dim: #4b5a70;
+  --faint: #c2cbd648;
+  --faint-txt: #6b7a8f;
 }
 * {
   margin: 0;
@@ -35,7 +47,7 @@ body {
 }
 ::selection {
   background: var(--amber);
-  color: #04070d;
+  color: var(--on-accent);
 }
 a {
   color: inherit;
@@ -61,7 +73,7 @@ button:focus-visible {
   background: radial-gradient(
     120% 90% at 50% 40%,
     transparent 55%,
-    #04070d 100%
+    var(--bg) 100%
   );
 }
 .wrap {
@@ -110,7 +122,7 @@ button:focus-visible {
   left: 0;
   right: 0;
   z-index: 50;
-  background: #04070dcc;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -172,6 +184,26 @@ button:focus-visible {
 .sb-nav a:hover {
   color: var(--amber);
 }
+.sb-theme {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.sb-theme::before {
+  content: "[ ";
+}
+.sb-theme::after {
+  content: " ]";
+}
+.sb-theme:hover {
+  color: var(--amber);
+}
 
 /* ============ HERO ============ */
 .hero {
@@ -202,8 +234,8 @@ h1 {
   letter-spacing: -0.01em;
   text-transform: uppercase;
   text-shadow:
-    0 0 60px #04070d,
-    0 0 20px #04070d;
+    0 0 60px var(--bg),
+    0 0 20px var(--bg);
 }
 h1 .row {
   display: block;
@@ -232,7 +264,7 @@ h1 .row:nth-child(3) span {
   max-width: 540px;
   color: var(--dim);
   font-size: 17px;
-  text-shadow: 0 0 24px #04070d;
+  text-shadow: 0 0 24px var(--bg);
 }
 .h-sub strong {
   color: var(--txt);
@@ -253,7 +285,7 @@ h1 .row:nth-child(3) span {
   text-decoration: none;
   border: 1px solid var(--amber);
   color: var(--amber);
-  background: #04070d88;
+  background: color-mix(in srgb, var(--bg) 53%, transparent);
   backdrop-filter: blur(6px);
   clip-path: polygon(
     10px 0,
@@ -272,11 +304,11 @@ button.btn {
 }
 .btn.solid {
   background: var(--amber);
-  color: #04070d;
+  color: var(--on-accent);
 }
 .btn:hover {
   background: var(--amber);
-  color: #04070d;
+  color: var(--on-accent);
 }
 .h-metrics {
   display: flex;
@@ -450,7 +482,7 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 30px #04070d;
+  text-shadow: 0 0 30px var(--bg);
 }
 .sec-head .rule {
   flex: 1;
@@ -711,7 +743,11 @@ footer {
   border-top: 1px solid var(--line);
   position: relative;
   z-index: 5;
-  background: linear-gradient(180deg, transparent, #04070dee 30%);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--bg) 93%, transparent) 30%
+  );
 }
 footer .wrap {
   padding: 90px 24px 40px;
