@@ -9,6 +9,14 @@ import * as THREE from "three";
  * count-up metrics and scroll reveals. Renders nothing itself — it drives the
  * static markup in page.tsx by id/class, exactly like the original script.
  */
+/** Resolves the current theme's `--bg` custom property to a Three.js color. */
+function resolveBgColor(): THREE.Color {
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--bg")
+    .trim();
+  return new THREE.Color(raw || "#04070d");
+}
+
 export default function Effects() {
   useEffect(() => {
     const cleanups: Array<() => void> = [];
@@ -53,7 +61,7 @@ export default function Effects() {
     });
     renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x04070d, 0.028);
+    scene.fog = new THREE.FogExp2(resolveBgColor().getHex(), 0.028);
     const camera = new THREE.PerspectiveCamera(
       55,
       innerWidth / innerHeight,
@@ -339,6 +347,16 @@ export default function Effects() {
     cleanups.push(() =>
       document.removeEventListener("visibilitychange", onVisibility),
     );
+
+    // recolor the fog live when the theme toggle flips data-theme on <html>
+    const themeObserver = new MutationObserver(() => {
+      scene.fog = new THREE.FogExp2(resolveBgColor().getHex(), 0.028);
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    cleanups.push(() => themeObserver.disconnect());
 
     /* ================= 3D TILT CARDS ================= */
     if (!reduced && matchMedia("(pointer:fine)").matches) {
