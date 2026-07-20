@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import CopyEmail from "./CopyEmail";
 import Effects from "./Effects";
+import ThemeToggle from "./ThemeToggle";
 
 /** CSS custom property helper for the skill-bar fill widths. */
 const w = (value: number): CSSProperties =>
@@ -23,6 +24,7 @@ export default function Home() {
             HAO<em>.</em>SYS
           </a>
           <nav className="sb-nav" aria-label="Sections">
+            <ThemeToggle />
             <a href="#missions">missions</a>
             <a href="#stack">stack</a>
             <a href="#contact">contact</a>
